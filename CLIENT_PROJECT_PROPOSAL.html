@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonio - Client Proposal & Technical Overview</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+            background: #fff;
+        }
+
+        h1 {
+            color: #2563eb;
+            border-bottom: 2px solid #ebf2ff;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #1e40af;
+            margin-top: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+
+        h3 {
+            color: #374151;
+            margin-top: 25px;
+        }
+
+        .box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .price-tag {
+            font-size: 1.25em;
+            font-weight: bold;
+            color: #059669;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Fonio: Technical & Commercial Proposal</h1>
+    <p>This document outlines the technical infrastructure, operational costs, and recommended commercial pricing
+        strategy for the Fonio AI Voice Platform.</p>
+
+    <!-- SECTION 1: RESOURCES -->
+    <h2>1. System Architecture & Resources</h2>
+    <p>The platform is built on a modern, scalable stack leveraging best-in-class AI and Telephony providers.</p>
+
+    <div class="box">
+        <h3>Core Intelligence (The "Brain")</h3>
+        <ul>
+            <li><strong>Provider:</strong> OpenAI</li>
+            <li><strong>Model:</strong> <span class="highlight">gpt-4o-mini</span></li>
+            <li><strong>Function:</strong> Understands user intent, manages conversation flow, and generates intelligent
+                responses in real-time.</li>
+            <li><strong>Reason for Choice:</strong> Offers the best balance of speed (low latency for voice) and
+                cost-efficiency.</li>
+        </ul>
+
+        <h3>Telephony Infrastructure (The "Phone Line")</h3>
+        <ul>
+            <li><strong>Provider:</strong> Twilio</li>
+            <li><strong>Function:</strong> Manages global phone numbers, inbound/outbound call routing, and reliable
+                connection to carrier networks.</li>
+            <li><strong>Capabilities:</strong> Support for local and toll-free numbers in 100+ countries.</li>
+        </ul>
+
+        <h3>Voice Synthesis (The "Speaker")</h3>
+        <ul>
+            <li><strong>Provider:</strong> Amazon Polly (via Twilio)</li>
+            <li><strong>Model:</strong> Neural TTS</li>
+            <li><strong>Function:</strong> Converts AI text into lifelike, natural-sounding human speech.</li>
+        </ul>
+
+        <h3>Email Delivery (Post-Call)</h3>
+        <ul>
+            <li><strong>Protocol:</strong> SMTP (via Nodemailer)</li>
+            <li><strong>Function:</strong> Instantly sends call summaries and transcripts to the user after every call.
+            </li>
+        </ul>
+
+        <h3>Hosting & Application</h3>
+        <ul>
+            <li><strong>Frontend:</strong> Next.js 16 (React 19)</li>
+            <li><strong>Database:</strong> SQLite (Dev) / Postgres (Production Ready)</li>
+            <li><strong>Security:</strong> NextAuth.js for secure session management.</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 2: OPERATIONAL COSTS -->
+    <h2>2. Operational Cost Breakdown (Your Cost)</h2>
+    <p>These are the direct costs incurred by the platform for every minute of usage. These costs are variable and scale
+        with usage.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Resource</th>
+                <th>Provider</th>
+                <th>Unit Cost</th>
+                <th>Cost per 5-min Call</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Phone Line</strong></td>
+                <td>Twilio</td>
+                <td>$0.0085 / min</td>
+                <td>$0.0425</td>
+            </tr>
+            <tr>
+                <td><strong>AI Intelligence</strong></td>
+                <td>OpenAI (gpt-4o-mini)</td>
+                <td>~$0.001 / call</td>
+                <td>$0.0010</td>
+            </tr>
+            <tr>
+                <td><strong>Voice Synthesis</strong></td>
+                <td>Amazon Polly</td>
+                <td>~$0.010 / min</td>
+                <td>$0.0500</td>
+            </tr>
+            <tr>
+                <td><strong>Recording & Storage</strong></td>
+                <td>Twilio</td>
+                <td>$0.0030 / min</td>
+                <td>$0.0150</td>
+            </tr>
+            <tr>
+                <td><strong>Email Notification</strong></td>
+                <td>SMTP Provider (e.g., SendGrid)</td>
+                <td>~$0.001 / email</td>
+                <td>$0.0010</td>
+            </tr>
+            <tr style="background-color: #f0fdf4; font-weight: bold;">
+                <td colspan="3">TOTAL BASE COST</td>
+                <td>~$0.11 / call</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="note">* Phone numbers lease for approx $1.15/month per number.</div>
+
+    <!-- SECTION 3: PRICING STRATEGY -->
+    <h2>3. Recommended Client Pricing Strategy</h2>
+    <p>To ensure profitability and sustainability, we recommend the following pricing tiers for your end customers.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <!-- Plan 1 -->
+        <div class="box" style="border-top: 4px solid #94a3b8;">
+            <h3>Starter (Pay-As-You-Go)</h3>
+            <p>Best for sporadic usage or testing.</p>
+            <div class="price-tag">$0.25 / minute</div>
+            <ul style="margin-top: 15px;">
+                <li>No monthly commitment</li>
+                <li>Full access to all AI agents</li>
+                <li>Phone number: $5/month</li>
+            </ul>
+            <p><strong>Margin:</strong> ~90% (Profit: $0.23/min)</p>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="box" style="border-top: 4px solid #2563eb; background: #eff6ff;">
+            <h3>Business Pro (Subscription)</h3>
+            <p>For businesses with regular call volume.</p>
+            <div class="price-tag">$99 / month</div>
+            <ul style="margin-top: 15px;">
+                <li><strong>1,000 Minutes</strong> included</li>
+                <li>1 Dedicated Phone Number included</li>
+                <li>Call Recordings included</li>
+                <li>Priority Support</li>
+            </ul>
+            <p><strong>Margin:</strong> ~75% (Profit: ~$75/user)</p>
+        </div>
+    </div>
+
+    <p style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+        <strong>Strategic Note:</strong> This pricing model ensures that even your heavy users are profitable, while the
+        subscription model provides predictable recurring revenue. The "Business Pro" plan is priced competitively
+        against market leaders like Fonio.ai while offering superior margins.
+    </p>
+
+</body>
+
+</html>

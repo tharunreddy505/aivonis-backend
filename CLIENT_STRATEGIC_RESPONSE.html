@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIvonis - Strategic Pricing Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @media print {
+            .no-print { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="max-w-5xl mx-auto bg-white min-h-screen shadow-xl">
+        
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-12 relative overflow-hidden">
+            <div class="relative z-10">
+                <p class="text-indigo-200 uppercase tracking-widest text-xs font-bold mb-2">Internal Strategy Document</p>
+                <h1 class="text-4xl font-bold mb-2">Strategic Pricing & Market Proposal</h1>
+                <p class="text-xl text-indigo-100">Prepared for AIvonis Leadership</p>
+            </div>
+            <!-- Decorative circle -->
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-indigo-500 rounded-full opacity-50 mix-blend-multiply filter blur-xl"></div>
+        </header>
+
+        <main class="p-12 space-y-16">
+
+            <!-- Executive Summary -->
+            <section>
+                <div class="border-l-4 border-indigo-600 pl-6 py-2 bg-slate-50">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-2">Executive Summary</h2>
+                    <p class="text-slate-600 leading-relaxed">
+                        This proposal outlines a <strong>market-driven SaaS pricing strategy</strong> for AIvonis. 
+                        Analysis of competitors (Air.ai, Bland.ai, Fonio.ai) reveals a gap for a mid-market, self-service solution that avoids high upfront licensing fees (~$25k) while offering better "all-in-one" value than raw infrastructure providers like Vapi.
+                        <br><br>
+                        <strong>Recommendation:</strong> A 3-tier subscription model reducing friction for entry ($49/mo) while securing healthy gross margins <strong>(55%+)</strong> on usage.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 1. Market Scan -->
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm mr-3">1</span>
+                    Market Intelligence Scan
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-slate-600 border border-slate-200 rounded-lg overflow-hidden">
+                        <thead class="bg-slate-100 text-xs uppercase font-bold text-slate-700">
+                            <tr>
+                                <th class="px-6 py-4">Competitor</th>
+                                <th class="px-6 py-4">Primary Model</th>
+                                <th class="px-6 py-4">Entry / Upfront</th>
+                                <th class="px-6 py-4">Est. Cost per Min</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr class="bg-white">
+                                <td class="px-6 py-4 font-bold text-slate-900">AIvonis (Proposed)</td>
+                                <td class="px-6 py-4 text-green-700 font-semibold">SaaS Subscription + Usage</td>
+                                <td class="px-6 py-4">$49 / mo</td>
+                                <td class="px-6 py-4">$0.14 - $0.20</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="px-6 py-4">Fonio.ai</td>
+                                <td class="px-6 py-4">Hybrid / Prepaid</td>
+                                <td class="px-6 py-4">~€99 / mo</td>
+                                <td class="px-6 py-4">~€0.15 ($0.16)</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4">Air.ai</td>
+                                <td class="px-6 py-4">Enterprise License</td>
+                                <td class="px-6 py-4 text-red-600 font-bold">$25,000+</td>
+                                <td class="px-6 py-4">$0.11 - $0.32</td>
+                            </tr>
+                            <tr class="bg-slate-50">
+                                <td class="px-6 py-4">Bland.ai</td>
+                                <td class="px-6 py-4">Dev-First / Metered</td>
+                                <td class="px-6 py-4">Free / $299</td>
+                                <td class="px-6 py-4">~$0.12 - $0.14</td>
+                            </tr>
+                            <tr class="bg-white">
+                                <td class="px-6 py-4">Vapi.ai</td>
+                                <td class="px-6 py-4">Infrastructure Only</td>
+                                <td class="px-6 py-4">Pay-as-you-go</td>
+                                <td class="px-6 py-4 text-xs text-slate-400">$0.05 + Own Keys (~$0.20 Total)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- 2. Cost Analysis -->
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm mr-3">2</span>
+                    Unit Economics & Margins
+                </h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-800 mb-4 border-b pb-2">Estimated Costs (Per Minute)</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span>Telephony (Twilio - US Outbound)</span> <span class="font-mono text-slate-500">$0.014</span></div>
+                            <div class="flex justify-between"><span>STT (Deepgram/Nova)</span> <span class="font-mono text-slate-500">$0.005</span></div>
+                            <div class="flex justify-between"><span>LLM (GPT-4o Mini / LLaMa)</span> <span class="font-mono text-slate-500">$0.020</span></div>
+                            <div class="flex justify-between"><span>TTS (Deepgram Aura / 11Labs)</span> <span class="font-mono text-slate-500">$0.030</span></div>
+                            <div class="border-t pt-2 mt-2 flex justify-between font-bold text-slate-900">
+                                <span>Total COGS</span> 
+                                <span>~$0.07 / min</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                        <h3 class="font-bold text-green-900 mb-4 border-b border-green-200 pb-2">Profitability Projection</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold text-green-800 mb-1">
+                                    <span>Selling at $0.12/min</span>
+                                    <span>41% Margin</span>
+                                </div>
+                                <div class="w-full bg-green-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 41%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold text-green-800 mb-1">
+                                    <span>Selling at $0.16/min (Target)</span>
+                                    <span>56% Margin</span>
+                                </div>
+                                <div class="w-full bg-green-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 56%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-semibold text-green-800 mb-1">
+                                    <span>Selling at $0.20/min</span>
+                                    <span>65% Margin</span>
+                                </div>
+                                <div class="w-full bg-green-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 65%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Recommendation -->
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center">
+                    <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm mr-3">3</span>
+                    Recommended Pricing Tiers
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Starter -->
+                    <div class="border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                        <h3 class="text-lg font-bold text-slate-700">Starter</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold text-slate-900">$49</span><span class="text-slate-500">/mo</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                <strong>300 Minutes</strong> included ($0.16/min)
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                1 AI Agent
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                1 Phone Number
+                            </li>
+                        </ul>
+                        <div class="bg-slate-100 rounded p-3 text-center text-xs font-mono text-slate-500">
+                            Overage: $0.20 / min
+                        </div>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="border-2 border-indigo-600 rounded-xl p-6 shadow-xl relative transform scale-105 bg-white">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase">Best Value</div>
+                        <h3 class="text-lg font-bold text-indigo-700">Pro Business</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold text-slate-900">$199</span><span class="text-slate-500">/mo</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                <strong>1,500 Minutes</strong> included ($0.13/min)
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                5 AI Agents
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                3 Phone Numbers
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                CRM Integrations
+                            </li>
+                        </ul>
+                        <div class="bg-indigo-50 rounded p-3 text-center text-xs font-mono text-indigo-800">
+                            Overage: $0.16 / min
+                        </div>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="border border-slate-200 rounded-xl p-6 hover:shadow-lg transition-shadow">
+                        <h3 class="text-lg font-bold text-slate-700">Agency / Scale</h3>
+                        <div class="my-4">
+                            <span class="text-4xl font-extrabold text-slate-900">$499</span><span class="text-slate-500">/mo</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-600 mb-8">
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                <strong>4,000 Minutes</strong> included ($0.12/min)
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                Unlimited Agents
+                            </li>
+                            <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                10 Phone Numbers
+                            </li>
+                             <li class="flex items-center"><svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> 
+                                White Label (No Branding)
+                            </li>
+                        </ul>
+                        <div class="bg-slate-100 rounded p-3 text-center text-xs font-mono text-slate-500">
+                            Overage: $0.14 / min
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="bg-slate-900 text-slate-400 py-12 text-center text-sm">
+            <p>&copy; 2024 AIvonis Strategy Team. Confidential.</p>
+        </footer>
+    </div>
+
+</body>
+</html>

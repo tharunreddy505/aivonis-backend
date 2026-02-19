@@ -1,0 +1,154 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              String   @id @default(uuid())
+  email           String   @unique
+  password        String
+  name            String
+  role            String
+  assignedAgentId String?
+  
+  // Password Reset
+  resetToken      String?
+  resetTokenExpiry DateTime?
+  
+  // Billing & Subscriptions
+  plan            String   @default("STARTER") // STARTER, PRO, ENTERPRISE
+  subscriptionStatus String @default("ACTIVE") // ACTIVE, PAST_DUE, CANCELED
+  stripeCustomerId String?
+  creditsBalance  Float    @default(0.0) // Cash balance for pay-as-you-go
+  usageMinutesUsed Int     @default(0)   // Reset monthly for subscriptions
+  
+  createdAt       DateTime @default(now())
+  agents          Agent[]
+  documents       Document[]
+  transactions    Transaction[]
+
+  @@index([email])
+}
+
+model Agent {
+  id        String   @id @default(uuid())
+  userId    String?  // Optional for now to avoid breaking existing data, but should be required
+  user      User?    @relation(fields: [userId], references: [id])
+  name      String
+  prompt    String
+  firstSentence String?
+  voice     String
+  gender    String
+  transcriptionEmail String?
+  maxCallDuration   Int      @default(20)
+  maxWaitTime       Int      @default(10)
+  sendEmailAfterCall Boolean @default(false)
+  companyInfo String? @default("")
+  createdAt DateTime @default(now())
+  calls     Call[]
+  phoneNumber PhoneNumber?
+  documents Document[]
+  tools             AgentTool[]
+}
+
+model AgentTool {
+  id          String   @id @default(uuid())
+  type        String   @default("transfer")
+  name        String
+  description String
+  config      String
+  enabled     Boolean  @default(true)
+  agentId     String
+  agent       Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Shared Knowledge Base Documents
+model Document {
+  id        String   @id @default(uuid())
+  name      String
+  url       String
+  size      Int      @default(0) 
+  content   String?  // Extracted text content
+  createdAt DateTime @default(now())
+  
+  userId    String?  // Make it optional for now to support existing docs
+  user      User?    @relation(fields: [userId], references: [id])
+  
+  agents    Agent[]
+}
+
+model Call {
+  id        String   @id @default(uuid())
+  callSid   String   @unique
+  agentId   String
+  from      String?  // Caller number
+  to        String?  // Twilio number called
+  direction String?  // inbound or outbound
+  startTime DateTime @default(now())
+  endTime   DateTime?
+  duration  Int      @default(0) // Seconds
+  cost      Float    @default(0.0)
+  status    String   @default("completed")
+  recordingUrl String?
+  
+  agent     Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  transcripts Transcript[]
+
+  @@index([callSid])
+  @@index([agentId])
+}
+
+model Transcript {
+  id        String   @id @default(uuid())
+  callSid   String
+  role      String
+  content   String
+  timestamp DateTime @default(now())
+  call      Call     @relation(fields: [callSid], references: [callSid], onDelete: Cascade)
+
+  @@index([callSid])
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+  amount      Float
+  type        String   // CREDIT (Add funds), DEBIT (Usage cost)
+  description String?
+  createdAt   DateTime @default(now())
+}
+
+model ActiveAgent {
+  id      Int    @id @default(1)
+  agentId String
+}
+
+model Settings {
+  id               Int     @id @default(1)
+  openaiApiKey     String?
+  twilioAccountSid String?
+  twilioAuthToken  String?
+  smtpHost         String?
+  smtpPort         Int?
+  smtpUser         String?
+  smtpPassword     String?
+  smtpSecure       Boolean @default(true)
+}
+
+model PhoneNumber {
+  id          String   @id @default(uuid())
+  phoneNumber String   @unique // The actual E.164 phone number
+  sid         String   @unique // Twilio SID
+  countryCode String?
+  friendlyName String?
+  agentId     String?  @unique
+  agent       Agent?   @relation(fields: [agentId], references: [id])
+  createdAt   DateTime @default(now())
+}
